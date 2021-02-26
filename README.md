@@ -12,9 +12,9 @@ $ export AWS_ACCESS_KEY_ID=AAAAAA
 $ export AWS_SECRET_ACCESS_KEY=AAAAA
 ```
 
-# typescript-aws-vpc
+# typescript-aws-kms
 
-A CDK for Terraform application in TypeScript for VPC configuraiton.
+A CDK for Terraform application in TypeScript for kms configuraiton.
 
 ## Usage
 
