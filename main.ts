@@ -1,10 +1,9 @@
 import { Construct } from "constructs";
-import { App, TerraformOutput, TerraformStack } from "cdktf";
+import { App, TerraformStack } from "cdktf";
 import {
   AwsProvider,
   DataAwsCallerIdentity,
-  KmsAlias,
-  KmsKey,
+  kms
 } from "./.gen/providers/aws/";
 
 class MyStack extends TerraformStack {
@@ -20,7 +19,7 @@ class MyStack extends TerraformStack {
 
     const awsAccountid = new DataAwsCallerIdentity(this, "aws_id", {});
 
-    const awskmsKey = new KmsKey(this, "Aws_kms", {
+    const awskmsKey = new kms.KmsKey(this, "Aws_kms", {
       description: "Create KMS encryption for creating encryption on volume",
       enableKeyRotation: true,
       policy: `{
@@ -108,10 +107,11 @@ class MyStack extends TerraformStack {
       },
     });
 
-    new KmsAlias(this, "Aws_kms_alies", {
+    new kms.KmsAlias(this, "Aws_kms_alies", {
       name: `alias/${ENV}`,
       targetKeyId: awskmsKey.id,
     });
+    
     new TerraformOutput(this, "Aws_Kms_id", {
       value: awskmsKey.id,
     });
