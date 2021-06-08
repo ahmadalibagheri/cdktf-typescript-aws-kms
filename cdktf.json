@@ -1,10 +1,13 @@
 {
   "language": "typescript",
-  "app": "npm run --silent compile && node main.js",
-  "terraformProviders": ["aws@~>3.29.0"],
+  "app": "npx ts-node main.ts",
+  "projectId": "74a6ca56-b96b-48de-a831-8c1dcff6a675",
+  "terraformProviders": [
+    "aws@~>3.29.0"
+  ],
   "terraformModules": [],
   "context": {
     "excludeStackIdFromLogicalIds": "true",
-    "allowSepCharsInLogicalIds": "true"
+"allowSepCharsInLogicalIds": "true"
   }
 }
