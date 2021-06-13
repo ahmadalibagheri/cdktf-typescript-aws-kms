@@ -1,8 +1,8 @@
 import { Construct } from "constructs";
-import { App, TerraformStack } from "cdktf";
+import { App, TerraformStack, TerraformOutput } from "cdktf";
 import {
   AwsProvider,
-  DataAwsCallerIdentity,
+  datasources,
   kms
 } from "./.gen/providers/aws/";
 
@@ -17,7 +17,7 @@ class MyStack extends TerraformStack {
       region: "us-east-1",
     });
 
-    const awsAccountid = new DataAwsCallerIdentity(this, "aws_id", {});
+    const awsAccountid = new datasources.DataAwsCallerIdentity(this, "aws_id", {});
 
     const awskmsKey = new kms.KmsKey(this, "Aws_kms", {
       description: "Create KMS encryption for creating encryption on volume",
